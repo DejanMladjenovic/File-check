@@ -12,21 +12,27 @@ public class Filecheck {
 
 	/**Glavna metoda*/
 	public static void main(String[] args) throws IOException, FileNotFoundException {
-
+		
+		//Deklarisi fajl objekat
+		File file;
+		
 		//Kreiraj skener objekat
 		Scanner input = new Scanner(System.in);
 		
-		//Pitaj korisnika da unese naziv fajla
-		System.out.println("Unesite naziv fajla:");
-		String fileName = input.nextLine();
+		do {
+			// Pitaj korisnika da unese naziv fajla
+			System.out.println("Unesite naziv fajla:");
+			String fileName = input.nextLine();
+
+			// Kreiraj fajl objekat
+			file = new File(fileName);
+
+			if (!file.exists()) {
+				System.out.println("Fajl ne postoji.");
+				System.out.println("\nPokusajte ponovo.");
+			}
+		} while (!file.exists());
 		
-		//Kreiraj fajl objekat
-		File file = new File(fileName + ".txt");
-		
-		if(!file.exists()){
-			System.out.println("File doesn't exists.");
-			System.exit(0);
-		}
 		//Kreiraj listu
 		ArrayList<String> list = new ArrayList<>();
 		
@@ -36,33 +42,21 @@ public class Filecheck {
 			list.add(input.next());
 		}
 		
+		//Kreiraj test objekat
+		Instrukcije fajl = new Instrukcije();
+		
 		//Naziv fajla
 		System.out.println("Vas fajl: " + file.getAbsolutePath());
 		
 		//Broj rijeci u fajlu
-		System.out.println("Broj rijeci: " + words(list));
+		System.out.println("Broj rijeci: " + fajl.words(list));
 		
 		//Broj unikatnih rijeci u fajlu
-		System.out.println("Broj unikatnih rijeci: " + uniqueWords(list));
+		System.out.println("Broj unikatnih rijeci: " + fajl.uniqueWords(list));
+		
+		//Broj recenica u fajlu
+		System.out.println("Broj recenica: " + fajl.sentences(list));
 		
 	}
 	
-	/**Broj rijeci u fajlu*/
-	public static int words(ArrayList<String> list){
-		
-		int words = list.size();
-		
-		return words;
-	}
-	
-	/**Broj unikatnih rijeci u fajlu*/
-	public static int uniqueWords(ArrayList<String> list){
-		
-		Set<String> set = new HashSet<>(list);
-		
-		int count = set.size();
-		
-		return count;
-	}
-
 }
