@@ -40,5 +40,18 @@ public class Instrukcije {
 		
 		return count;
 	}
+	/**Prebrojavanje slova**/
+	
+	public static char [] brojSlova(ArrayList <String> list){
+		char[] charcount = new char[10000];
+		// loop to count characters
+		for(int i =0; i<list.size(); i++){
+		for (char z : list.get(i).toCharArray()) {
+			charcount[z]++;
 
+		}
+		}
+	
+		return charcount;
+	}
 }

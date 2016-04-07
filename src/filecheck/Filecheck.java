@@ -15,7 +15,7 @@ public class Filecheck {
 		
 		//Deklarisi fajl objekat
 		File file;
-		
+		 
 		//Kreiraj skener objekat
 		Scanner input = new Scanner(System.in);
 		
@@ -57,6 +57,11 @@ public class Filecheck {
 		//Broj recenica u fajlu
 		System.out.println("Broj recenica: " + fajl.sentences(list));
 		
+		//Broj slova u fajlu
+		System.out.println("Broj slova u textu: ");
+		for (char i = 'a'; i <= 'z'; i++) {
+			System.out.println(i + " = " + (int) (fajl.brojSlova(list)[i]));
+		}
 	}
 	
 }
