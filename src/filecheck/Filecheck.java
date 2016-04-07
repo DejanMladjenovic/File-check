@@ -15,7 +15,7 @@ public class Filecheck {
 		
 		//Deklarisi fajl objekat
 		File file;
-		
+		 
 		//Kreiraj skener objekat
 		Scanner input = new Scanner(System.in);
 		
